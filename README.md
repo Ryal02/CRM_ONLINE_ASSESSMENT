@@ -130,7 +130,7 @@ docker exec -it mysql_db mysql -u user -p password
 ### After setting up both backend and frontend, you can now access your application in the browser.
 
 - API should be running at http://localhost:8005
-- Frontend should be running at http://localhost:5173
+- Frontend should be running at http://localhost:5173 ( Add env variable: VITE_API_URL=http://localhost:8005/api/ )
 - Look envsample for env variables
 ## Use seeder account to login if ever authentication is need
 
