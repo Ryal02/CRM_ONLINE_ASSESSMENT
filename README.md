@@ -23,9 +23,9 @@ git clone (https://github.com/Ryal02/CRM_ONLINE_ASSESSMENT.git)
 
 project-folder/
 
-  │── backend/           # Laravel API
+  │── backend/           # Laravel Framework v12.3.0 API
 
-  │── frontend/          # React/Vue Frontend
+  │── frontend/          # React v19 Frontend
 
   │── nginx/             # Nginx Configuration
 
@@ -77,6 +77,8 @@ cd backend
 composer install && php artisan
 ```
 ### To Check Laravel installation
+
+
 
 ## Set up authentication (Laravel Sanctum)
 
