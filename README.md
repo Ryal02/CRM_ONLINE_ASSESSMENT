@@ -108,6 +108,11 @@ php artisan db:seed --class=CustomerSeeder
 php artisan test
 ```
 
+## FOR DATABASE ACCESS
+### Run the following command
+```sh
+docker exec -it mysql_db mysql -u user -p password
+```
 ## Front end set up
 
 ### Navigate to the frontend directory
@@ -126,3 +131,8 @@ php artisan test
 
 - API should be running at http://localhost:8005
 - Frontend should be running at http://localhost:5173
+- Look envsample for env variables
+## Use seeder account to login if ever authentication is need
+
+### Email : - admin@example.com
+### Password : - password
