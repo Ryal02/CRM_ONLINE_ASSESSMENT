@@ -55,6 +55,17 @@ docker ps
 ```sh
 docker exec -it laravel_api bash
 ```
+## Install composer and dependencies inside docker
+
+### All command must have ```docker exec -it laravel_api```
+
+### Like
+```sh
+docker exec -it laravel_api composer install
+```
+```sh
+docker exec -it laravel_api php artisan, 
+```
 
 ### OR change directory to the backend folder:
 ```sh
@@ -94,3 +105,22 @@ php artisan db:seed --class=CustomerSeeder
 ```
 php artisan test
 ```
+
+## Front end set up
+
+### Navigate to the frontend directory
+```sh
+  yarn install or yarn add
+```
+
+### To start the application run:
+```sh
+  yarn dev
+```
+
+# FINAL STEPS
+
+### After setting up both backend and frontend, you can now access your application in the browser.
+
+- API should be running at http://localhost:8005
+- Frontend should be running at http://localhost:5173
