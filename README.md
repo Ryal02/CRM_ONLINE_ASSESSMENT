@@ -108,6 +108,10 @@ php artisan db:seed --class=CustomerSeeder
 php artisan test
 ```
 
+```sh
+php artisan customers:reindex
+```
+
 ## FOR DATABASE ACCESS
 ### Run the following command
 ```sh
