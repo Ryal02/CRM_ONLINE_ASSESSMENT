@@ -25,7 +25,7 @@ class CustomerService
                     'query' => [
                         'multi_match' => [
                             'query' => $searchTerm,
-                            'fields' => ['first_name^2', 'last_name^2', 'email', 'contact_number']
+                            'fields' => ['first_name^2', 'last_name^2', 'email']
                         ]
                     ]
                 ]

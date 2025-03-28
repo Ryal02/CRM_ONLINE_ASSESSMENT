@@ -9,9 +9,9 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route element={<PrivateRoute />}> */}
+        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Customer />} />
-        {/* </Route> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
