@@ -4,6 +4,7 @@ import { Customer } from "./pages/user/Customer";
 import PrivateRoute from "./components/PrivateRoute";
 
 const AppRoutes = () => {
+  
   return (
     <BrowserRouter>
       <Routes>
