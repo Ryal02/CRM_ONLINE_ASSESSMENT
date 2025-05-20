@@ -1,7 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const PrivateRoute = () => {
-  const isAuthenticated = !!localStorage.getItem('token'); // Check if user is authenticated
+  const token = Cookies.get('token');
+  const isAuthenticated = !!token; // Check if user is authenticated
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 };

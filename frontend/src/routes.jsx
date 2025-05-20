@@ -1,17 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login } from "./pages/auth/Login";
-import { Customer } from "./pages/user/Customer";
-import PrivateRoute from "./components/PrivateRoute";
+// AppRoutes.jsx
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { AppRoutesConfig } from '@services/routes';
 
 const AppRoutes = () => {
-  
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Customer />} />
-        </Route>
+        {AppRoutesConfig}
       </Routes>
     </BrowserRouter>
   );

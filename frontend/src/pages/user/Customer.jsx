@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useCustomers} from "../../hooks/useCustomers";
 import { addCustomer, updateCustomer, deleteCustomerApi } from "../../api/customerApi";
 import { CustomerTable, CustomerModal } from '../../components';
 import { showSuccessAlert, showErrorAlert } from '../../components/Swal';
 import Swal from 'sweetalert2';
-import { Button, Container, TextField, CircularProgress, LinearProgress} from "@mui/material";
-
+import { Button, Box, Container, TextField, LinearProgress} from "@mui/material";
+import { MainLayout } from '@components/layouts';
 
 export const Customer = () => {
     const { data, isLoading, error, refetch } = useCustomers();
@@ -21,7 +21,8 @@ export const Customer = () => {
         setOpenDialog(true);
     };
 
-    const mutationDelete = useMutation(deleteCustomerApi, {
+    const mutationDelete = useMutation({
+        mutationFn: deleteCustomerApi,
         onSuccess: () => {
             showSuccessAlert('The customer has been deleted successfully!');
             refetch(); // Update state after deletion
@@ -61,7 +62,8 @@ export const Customer = () => {
         setOpenDialog(false);
     };
 
-    const mutationAdd = useMutation(addCustomer, {
+    const mutationAdd = useMutation({
+        mutationFn: addCustomer,
         onSuccess: () => {
             setOpenDialog(false);
             refetch();
@@ -72,7 +74,8 @@ export const Customer = () => {
         },
     });
 
-    const mutationUpdate = useMutation(updateCustomer, {
+    const mutationUpdate = useMutation({
+        mutationFn: updateCustomer,
         onSuccess: () => {
             setOpenDialog(false);
             refetch();
@@ -122,36 +125,46 @@ export const Customer = () => {
     if (error) return <p>Error fetching customers: {error.message}</p>;
     
     return (
-        <Container maxWidth="md">
-            <div className="d-flex justify-content-between mb-3">
-                <h2>Customer List</h2>
-                <Button variant="contained" color="primary" onClick={handleAdd}>
-                Add Customer
-                </Button>
-            </div>
+        <MainLayout>
+            <Box
+                sx={{
+                flex: 1,
+                height: '100vh',
+                backgroundColor: '#f4f4f4',
+                }}
+            >
+             
+                    <div className="d-flex justify-content-between mb-3">
+                        <h2>Customer List</h2>
+                        <Button variant="contained" color="primary" onClick={handleAdd}>
+                        Add Customer
+                        </Button>
+                    </div>
 
-            <TextField
-                label="Search"
-                variant="outlined"
-                fullWidth
-                value={searchTerm}
-                onChange={handleSearch}
-                margin="normal"
-            />
-            {/* table */}
-            <CustomerTable onEdit={handleEdit} onDelete={handleDelete} filteredData={filteredData} />
-        
-            {/* Add/Edit Dialog */}
-            <CustomerModal
-                open={openDialog} 
-                onClose={handleDialogClose}
-                customerToEdit={customerToEdit}
-                newCustomer={newCustomer}
-                setCustomerToEdit={setCustomerToEdit}
-                setNewCustomer={setNewCustomer}
-                handleSave={handleSave}
-            />
-        </Container>
+                    <TextField
+                        label="Search"
+                        variant="outlined"
+                        fullWidth
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        margin="normal"
+                    />
+                    {/* table */}
+                    <CustomerTable onEdit={handleEdit} onDelete={handleDelete} filteredData={filteredData} />
+                
+                    {/* Add/Edit Dialog */}
+                    <CustomerModal
+                        open={openDialog} 
+                        onClose={handleDialogClose}
+                        customerToEdit={customerToEdit}
+                        newCustomer={newCustomer}
+                        setCustomerToEdit={setCustomerToEdit}
+                        setNewCustomer={setNewCustomer}
+                        handleSave={handleSave}
+                    />
+                
+            </Box>
+        </MainLayout>
     );
 };
 
